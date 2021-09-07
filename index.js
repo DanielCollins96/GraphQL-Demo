@@ -1,13 +1,15 @@
-const { ApolloServer, gql } = require('apollo-server');
+const express = require('express')
+const { ApolloServer, gql } = require('apollo-server-express');
+
 
 const typeDefs = gql`
-    schema {
-        query: Query
-    }
+schema {
+    query: Query
+}
 
-    type Query {
-        greeting: String
-    }
+type Query {
+    greeting: String
+}
 `
 // Resolver must mirror query object exactly
 const resolvers = {
@@ -16,6 +18,13 @@ const resolvers = {
     }
 }
 
+// app.get('/', (req, res) => {
+    //     res.send('Way 3 Sexy')
+    // })
 const server = new ApolloServer({typeDefs, resolvers});
-server.listen({port: 9000})
-      .then((serverInfo) => console.log(serverInfo))
+const app = express()
+server.applyMiddleware({ app });
+
+app.listen({port: 4000}, () => {
+    console.log('SERVEREEE');
+})
