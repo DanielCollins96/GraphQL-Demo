@@ -17,5 +17,5 @@ const resolvers = {
 }
 
 const server = new ApolloServer({typeDefs, resolvers});
-server.listen({port: 9000})
+server.listen({port: 4000})
       .then((serverInfo) => console.log(serverInfo))
