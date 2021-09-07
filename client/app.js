@@ -1,4 +1,4 @@
-const GQL_URL = 'http://localhost:9000/';
+const GQL_URL = 'http://localhost:4000/graphql';
 
 const p = document.querySelector('p');
 
@@ -23,5 +23,4 @@ const fetchGreeting = async () => {
 fetchGreeting().then(({greeting}) => {
     const p = document.querySelector('p');
     p.textContent = greeting;
-
 })
